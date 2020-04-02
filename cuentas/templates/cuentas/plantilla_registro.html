@@ -1,0 +1,15 @@
+{% extends 'plantilla_base.html' %}
+
+{% block title %}
+  REGISTRO
+{% endblock %}
+
+{% block content %}
+    <h1>RESGISTRARSE EN INSTAGRAM</h1>
+    <form class="site-form" action="/cuentas/registro/" method="post">
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" value="Registrar">
+    </form>
+  {% endblock %}
+  

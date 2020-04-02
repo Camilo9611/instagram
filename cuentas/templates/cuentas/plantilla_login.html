@@ -1,0 +1,21 @@
+{% extends 'plantilla_base.html' %}
+
+{% block title %}
+  LOGIN
+{% endblock %}
+
+{% block content %}
+    <h1>LOGIN A INSTAGRAM</h1>
+    <form class="site-form" action="/cuentas/login_sesion/" method="post">
+      {% csrf_token %}
+      <table>
+      {{form.as_table}}
+    </table>
+      <input type="submit" value="INICIAR SESION">
+    </form>  
+    <form class="" action="/cuentas/registro/" method="get">
+        <button type= "submit">
+            RESGISTRARSE
+        </button>
+    </form>
+{% endblock %}

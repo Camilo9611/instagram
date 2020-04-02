@@ -1,0 +1,86 @@
+{% extends 'plantilla_base.html' %}
+
+{% block title %}
+  HISTORIAS
+{% endblock %}
+
+{% block content %}
+    <header>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li>
+            <a>Usuario activo:@{{user.username}}</a>
+          </li>
+          <form class="">
+            <button type= "submit" name= boton_cerrar>
+                <a href ="{% url 'logout' %}" style="color:black;"> Cerrar Sesion</a>
+                
+            </button>
+          </form>
+          {% endif %}
+        </ul>
+      <div>
+      <form class="" action="/gestion/perfil/" method="get">
+          <button type= "submit">
+              VER PERFIL
+          </button>
+      </form>
+  
+      <form class="" action="/gestion/api/postearIn/" method="get">
+        <button type= "submit">
+            PUBLICAR FOTO
+        </button>
+    </form>
+
+        
+    <form class="" action="/gestion/api/In/" method="get">
+      <button type= "submit">
+          ELIMINAR PUBLICACION
+      </button>
+    </form> 
+    
+      <form class="" action="/gestion/api/postearPu/" method="get">
+        <button type= "submit">
+            COMENTAR FOTO
+        </button>
+      </form> 
+    
+      <form class="" action="/gestion/api/Pu/" method="get">
+        <button type= "submit">
+            ELIMINAR COMENTARIO
+        </button>
+      </form> 
+    </div>
+      </nav>
+    </header>
+    <h1>HISTORIAS DEL DIA...</h1>
+    <div class="posters">
+        {% for var in posters %}
+          <div class="var">
+            <p>@{{var.autor}}</p>
+            <img src="{{ var.imagen.url}}"/>
+            <p>Descripcion: {{var.descripcion}}</p>
+            {% for datoL in datoslikes %}
+              {% for id,lik in datoL.items %}
+                {% if id == var.id %}
+                  <p>Likes: {{lik}}</p>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            <p>Comentarios:</p>
+            {% for dato in datos %}
+              {% for id,coment in dato.items %}
+                {% if id == var.id %}
+                  <p>*{{coment}}</p>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            <p>{{var.fecha}}</p>
+          </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,62 @@
+{% extends 'plantilla_base.html' %}
+
+{% block title %}
+  PERFIL
+{% endblock %}
+
+{% block content %}
+<header>
+  <nav>
+    <ul>
+      {% if user.is_authenticated %}
+      <li>
+        <a>Usuario activo: {{user.username}}</a>
+      </li>
+      <form class="">
+        <button type= "submit" name= boton_cerrar>
+            <a href ="{% url 'logout' %}" style="color:black;"> Cerrar Sesion</a>
+            
+        </button>
+      </form>
+      {% endif %}
+    </ul>
+
+    <form class="" action="/gestion/" method="get">
+      <button type= "submit">
+          VER INICIO
+      </button>
+  </form>
+
+
+  <form class="" action="/gestion/api/perfil/editarPer/" method="get">
+    <button type= "submit">
+        EDITAR PERFIL
+    </button>
+</form>
+
+<a href = "{% url 'gestion:updatePer' user.id %}"></a>
+
+
+  </nav>
+</header>
+    <h1>PERFIL PERSONAL</h1>
+    <div class ="posters4">
+      {% for var in posters4 %}
+        {% if forloop.first %}
+          <p>Usuario: @{{var.autor}}</p>
+          <p>Nombre: {{var.nombre}}</p
+          {% load static %}>
+          <h2>Imagen de perfil.</h2>
+          <img src="{{ var.imagenPerfil.url}}"/>
+          <p>Info. Cuenta: {{var.infoCuenta}}</p>
+        {% endif %}
+
+        <h2>PUBLICACIONES:</h2>
+        {% for dato in datos %}
+          {% for id,image in dato.items %}
+              <img src="{{ image.url}}"/>
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}      
+    </div>
+{% endblock %}
