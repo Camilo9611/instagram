@@ -81,10 +81,10 @@ DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'instagramDB',
-        'USER': 'postgres',
+        'USER': 'instagram_admin',
         'PASSWORD': 'America1927',
-        'HOST':'127.0.0.1',
-        'DATABASE_PORT':'5432',
+        'HOST':'localhost',
+        'DATABASE_PORT':'',
 
     }
 
