@@ -59,7 +59,7 @@
         {% for var in posters %}
           <div class="var">
             <p>@{{var.autor}}</p>
-            <img src="{{ var.imagen.url}}"/>
+            <img src="{{ var.imagen.url}}" height="300" width="300"/>
             <p>Descripcion: {{var.descripcion}}</p>
             {% for datoL in datoslikes %}
               {% for id,lik in datoL.items %}

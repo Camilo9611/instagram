@@ -47,14 +47,18 @@
           <p>Nombre: {{var.nombre}}</p
           {% load static %}>
           <h2>Imagen de perfil.</h2>
-          <img src="{{ var.imagenPerfil.url}}"/>
+          {% if var.imagenPerfil %}
+            <img src="{{ var.imagenPerfil.url}}" height="300" width="300"/>
+          {% else %}
+            <img src="{%static 'sinFoto.jpg' %}" height="300" width="300"/>
+          {% endif %}
           <p>Info. Cuenta: {{var.infoCuenta}}</p>
         {% endif %}
 
         <h2>PUBLICACIONES:</h2>
         {% for dato in datos %}
           {% for id,image in dato.items %}
-              <img src="{{ image.url}}"/>
+              <img src="{{ image.url}}" height="300" width="300"/>
           {% endfor %}
         {% endfor %}
       {% endfor %}      
